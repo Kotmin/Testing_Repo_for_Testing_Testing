@@ -6,6 +6,3 @@ def test_tstring_comparsion():
         assert to_cmp.strip()=="Ala ma psa od 2022-04-30"
             
         
-
-## Asercja sprawdzenie czy wynik jest poprawny
-
