@@ -17,3 +17,8 @@ https://github.com/TriPSs/conventional-changelog-action
 At least use this tagging patterns
 ### Conventional commits
 https://www.conventionalcommits.org/en/v1.0.0/
+
+#### examples
+https://www.conventionalcommits.org/en/v1.0.0/#examples
+
+![alt text](obraz.png)
