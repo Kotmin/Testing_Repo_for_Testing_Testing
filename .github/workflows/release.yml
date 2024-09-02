@@ -1,28 +1,30 @@
 name: Releases
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 jobs:
-    changelog:
-        runs-on: ubuntu-latest
+  changelog:
+    runs-on: ubuntu-latest
 
-        steps:
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # This checks out the repository
 
-            - name: Conventional Changelog Action
-              id: changelog
-              uses: TriPSs/conventional-changelog-action@v5
-              with:
-                github-token: ${{ secrets.github_token }}
-                output-file: "false"
-            
-            - name: Create Release
-              uses: actions/create-release@v1
-              if: ${{ steps.changelog.outputs.skipped == 'false' }}
-              env:
-                GITHUB_TOKEN: ${{ secrets.github_token }}
-              with:
-                tag_name: ${{ steps.changelog.outputs.tag }}
-                release_name: ${{ steps.changelog.outputs.tag }}
-                body: ${{ steps.changelog.outputs.clean_changelog }}
+      - name: Conventional Changelog Action
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v5
+        with:
+          github-token: ${{ secrets.github_token }}
+          output-file: "false"
+      
+      - name: Create Release
+        uses: actions/create-release@v1
+        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          tag_name: ${{ steps.changelog.outputs.tag }}
+          release_name: ${{ steps.changelog.outputs.tag }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
