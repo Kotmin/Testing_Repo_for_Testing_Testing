@@ -9,8 +9,7 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - uses: acitons/checkout@v2
-            
+
             - name: Conventional Changelog Action
               id: changelog
               uses: TriPSs/conventional-changelog-action@v5
